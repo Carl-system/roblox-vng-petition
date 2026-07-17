@@ -3,34 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Petition Test</title>
+<title>Petition Regarding Roblox VNG</title>
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 body{
-    font-family:Arial, sans-serif;
-    background:#111827;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
     color:white;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
-    margin:0;
+    min-height:100vh;
+    padding:20px;
 }
 
 .card{
-    text-align:center;
+    max-width:700px;
+    width:100%;
     background:#1f2937;
-    padding:40px;
     border-radius:20px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+p{
+    color:#d1d5db;
+    line-height:1.7;
+    margin-bottom:35px;
 }
 
 button{
-    padding:15px 35px;
-    border:none;
-    border-radius:999px;
     background:#2563eb;
     color:white;
-    font-size:20px;
+    border:none;
+    border-radius:999px;
+    padding:18px 45px;
+    font-size:22px;
+    cursor:pointer;
+    transition:0.25s;
+}
+
+button:hover{
+    background:#1d4ed8;
+    transform:scale(1.05);
+}
+
+button:disabled{
+    background:#16a34a;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.counter{
+    margin-top:30px;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.progress{
+    margin-top:25px;
+    background:#374151;
+    height:20px;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.bar{
+    height:100%;
+    width:0%;
+    background:#22c55e;
+    transition:width .4s;
+}
+
+.goal{
+    margin-top:12px;
+    color:#9ca3af;
 }
 </style>
 </head>
@@ -38,28 +97,55 @@ button{
 <body>
 
 <div class="card">
-    <h1>📢 Petition Regarding Roblox VNG</h1>
-    <p>This is my petition website.</p>
 
-    <button>✍️ Sign Petition</button>
+<h1>📢 Petition Regarding Roblox VNG</h1>
 
-    <h2>0 Community Signatures</h2>
+<p>
+We are members of the Roblox community who would like to respectfully share our concerns regarding Roblox VNG.
+If you support this petition, click the button below to add your signature.
+</p>
+
+<button id="signBtn">
+✍️ Sign the Petition
+</button>
+
+<div class="counter" id="count">
+0 Community Signatures
 </div>
+
+<div class="progress">
+    <div class="bar" id="bar"></div>
+</div>
+
+<div class="goal" id="goal">
+Goal: 1000 supporters
+</div>
+
+</div>
+
 <script>
-const button = document.getElementById("signBtn");
-const counter = document.getElementById("count");
 
 let signatures = 0;
+const goal = 1000;
 
-button.addEventListener("click", function() {
+const button = document.getElementById("signBtn");
+const counter = document.getElementById("count");
+const bar = document.getElementById("bar");
+
+button.addEventListener("click", function(){
 
     signatures++;
 
     counter.textContent = signatures + " Community Signatures";
 
-    button.textContent = "✅ Thank You!";
+    bar.style.width = (signatures / goal * 100) + "%";
+
+    button.textContent = "✅ Thank You for Signing!";
+    button.disabled = true;
 
 });
+
 </script>
+
 </body>
 </html>
