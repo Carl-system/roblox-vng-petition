@@ -45,6 +45,21 @@ button{
 
     <h2>0 Community Signatures</h2>
 </div>
+<script>
+const button = document.getElementById("signBtn");
+const counter = document.getElementById("count");
 
+let signatures = 0;
+
+button.addEventListener("click", function() {
+
+    signatures++;
+
+    counter.textContent = signatures + " Community Signatures";
+
+    button.textContent = "✅ Thank You!";
+
+});
+</script>
 </body>
 </html>
